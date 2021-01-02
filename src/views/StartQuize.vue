@@ -1,5 +1,6 @@
 <template>
     <div class="start-quize">
+        
         Start
         <!-- <div v-for="(quiz, index) in QUIZES" :key="index">
             <router-link :to="'/single-quize/' + quiz.id" tag="a">{{quiz.id}}</router-link>
