@@ -35,7 +35,7 @@
                 </button>
             </div>
             <div>
-                <router-link :to="`/single-quize/${+this.$route.params.id +1}`" @click="clearAnswers()">next</router-link>
+                <router-link :to="`/single-quize/${+this.$route.params.id +1}`"><span @click="clearAnswers()">next</span></router-link>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@ export default {
             isCorrect1: false,
             isCorrect2: false,
             isCorrect3: false,
-            isCorrect4: false
+            isCorrect4: false,
         }
     },
     computed:{
@@ -128,6 +128,9 @@ export default {
     }
     &__sucsess{
         background: green;
+    }
+    &__wrong{
+        background: red;
     }
 }
 </style>
