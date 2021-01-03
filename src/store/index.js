@@ -206,11 +206,13 @@ export default new Vuex.Store({
         "src": "20.jpg",
         "answer": "Фиби"
       }
-          ]
+    ]
   },
   mutations: {
+    
   },
   actions: {
+
     
   },
   getters: {

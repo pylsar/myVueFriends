@@ -1,5 +1,6 @@
 <template>
     <div class="single-quize" :style="{backgroundImage: `url(${require('@/assets/img/' + quiz.src)})`}">
+        <timer />
         <div class="single-quize__box">
             <div class="single-quize__question">
                 <span class="single-quize__title">{{quiz.question}}</span>
@@ -41,9 +42,13 @@
     </div>
 </template> 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters} from 'vuex';
+import Timer from '../components/Timer';
 export default {
     name: 'SingleQuize',
+    components:{
+        Timer
+    },
     data(){
         return{
             isCorrect1: false,
@@ -72,13 +77,6 @@ export default {
             }else if(this.quiz.answer == this.quiz.answer4){
                 this.isCorrect4 = true;
             }       
-            else{
-                this.isCorrect1 = false;
-                this.isCorrect2 = false;
-                this.isCorrect3 = false;
-                this.isCorrect4 = false;
-
-            }
         },
         clearAnswers(){
             this.isCorrect1 = false;
