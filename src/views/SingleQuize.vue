@@ -8,34 +8,34 @@
                 <button 
                     class="single-quize__answer"
                     @click="chooseAnswer()"
-                    :class="{ 'single-quize__sucsess' : isCorrect}"
+                    :class="{ 'single-quize__sucsess' : isCorrect1}"
                 >
                 {{quiz.answer1}}
                 </button>
                 <button 
                     class="single-quize__answer"
                     @click="chooseAnswer()"
-                    :class="{ 'single-quize__sucsess' : isCorrect}"
+                    :class="{ 'single-quize__sucsess' : isCorrect2}"
                 >
                 {{quiz.answer2}}
                 </button>
                 <button 
                     class="single-quize__answer"
                     @click="chooseAnswer()"
-                    :class="{ 'single-quize__sucsess' : isCorrect}"
+                    :class="{ 'single-quize__sucsess' : isCorrect3}"
                 >
                 {{quiz.answer3}}
                 </button>
                 <button 
                     class="single-quize__answer"
                     @click="chooseAnswer()"
-                    :class="{ 'single-quize__sucsess' : isCorrect}"
+                    :class="{ 'single-quize__sucsess' : isCorrect4}"
                 >
                 {{quiz.answer4}}
                 </button>
             </div>
             <div>
-                <router-link :to="`/single-quize/${+this.$route.params.id +1}`">next</router-link>
+                <router-link :to="`/single-quize/${+this.$route.params.id +1}`" @click="clearAnswers()">next</router-link>
             </div>
         </div>
     </div>
@@ -46,7 +46,10 @@ export default {
     name: 'SingleQuize',
     data(){
         return{
-            isCorrect: false
+            isCorrect1: false,
+            isCorrect2: false,
+            isCorrect3: false,
+            isCorrect4: false
         }
     },
     computed:{
@@ -60,11 +63,28 @@ export default {
     },
     methods: {
         chooseAnswer(){
-            if(this.$store.state.answer !== this.$store.state.answer2){
-                this.isCorrect = false;
-            }else{
-                this.isCorrect = true;
+            if(this.quiz.answer == this.quiz.answer1){
+                this.isCorrect1 = true;
+            }else if(this.quiz.answer == this.quiz.answer2){
+                this.isCorrect2 = true;
+            }else if(this.quiz.answer == this.quiz.answer3){
+                this.isCorrect3 = true;
+            }else if(this.quiz.answer == this.quiz.answer4){
+                this.isCorrect4 = true;
+            }       
+            else{
+                this.isCorrect1 = false;
+                this.isCorrect2 = false;
+                this.isCorrect3 = false;
+                this.isCorrect4 = false;
+
             }
+        },
+        clearAnswers(){
+            this.isCorrect1 = false;
+            this.isCorrect2 = false;
+            this.isCorrect3 = false;
+            this.isCorrect4 = false; 
         }
     }
 }

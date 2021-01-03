@@ -29,29 +29,32 @@ export default new Vuex.Store({
       {
         "id": 3,
         "question": "Почему Бонни подстриглась на лысо?",
-        "answer1": "+Рейтчел посоветовала",
+        "answer1": "Рейтчел посоветовала",
         "answer2": "Заболела вшами",
         "answer3": "Поклоница Винна Дизеля",
         "answer4": "Закончился шампунь",
-        "src": "3.jpg"
+        "src": "3.jpg",
+        "answer": "Рейтчел посоветовала"
       },
       {
         "id": 4,
         "question": "Сколько эпизодов в сериале?",
         "answer1": "238",
-        "answer2": "+236",
+        "answer2": "236",
         "answer3": "234",
         "answer4": "280",
-        "src": "4.jpg"
+        "src": "4.jpg",
+        "answer": "236"
       },
       {
         "id": 5,
         "question": "Какую еду принес Бред Питт на день благодарения",
         "answer1": "Рататуй",
-        "answer2": "+Батат",
+        "answer2": "Батат",
         "answer3": "Борщ",
         "answer4": "Чипсы",
-        "src": "5.jpg"
+        "src": "5.jpg",
+        "answer": "Батат"
       },
       {
         "id": 6,
@@ -59,17 +62,19 @@ export default new Vuex.Store({
         "answer1": "Хлоя Зоуи",
         "answer2": "Джесика Молдберг",
         "answer3": "Элизабет Стоун",
-        "answer4": "+Джил Гудвейкер",
-        "src": "6.jpeg"
+        "answer4": "Джил Гудвейкер",
+        "src": "6.jpeg",
+        "answer": "Джил Гудвейкер"
       },
       {
         "id": 7,
         "question": "Чью задницу играл Джоуи?",
-        "answer1": "+Роберт де Ниро",
+        "answer1": "Роберт де Ниро",
         "answer2": "Кевин Костнер",
         "answer3": "Патрик Свейзи",
         "answer4": "Тимати",
-        "src": "7.jpg"
+        "src": "7.jpg",
+        "answer": "Роберт де Ниро"
       },
       {
         "id": 8,
@@ -78,7 +83,8 @@ export default new Vuex.Store({
         "answer2": "Мюрриэль",
         "answer3": "Франко",
         "answer4": "Блекберн",
-        "src": "8.jpg"
+        "src": "8.jpg",
+        "answer": "Мюрриэль"
       },
       {
         "id": 9,
@@ -86,17 +92,19 @@ export default new Vuex.Store({
         "answer1": "Duff",
         "answer2": "Манчестер",
         "answer3": "Пилсен",
-        "answer4": "+Бадингтон",
-        "src": "9.jpg"
+        "answer4": "Бадингтон",
+        "src": "9.jpg",
+        "answer": "Бадингтон"
       },
       {
         "id": 10,
         "question": "Родом из какого штата была девушка, которая отдала детей Чендлеру и Монике?",
         "answer1": "Массачусетс",
-        "answer2": "+Оклахома",
+        "answer2": "Оклахома",
         "answer3": "Тенесси",
         "answer4": "Огайо",
-        "src": "10.jpg"
+        "src": "10.jpg",
+        "answer": "Огайо"
       },
       {
         "id": 11,
@@ -105,7 +113,8 @@ export default new Vuex.Store({
         "answer2": "растаман из ксерокопии",
         "answer3": "Гантер",
         "answer4": "экстрасенс с тнт",
-        "src": "11.jpg"
+        "src": "11.jpg",
+        "answer": "Гантер"
       },
       {
         "id": 12,
@@ -114,16 +123,18 @@ export default new Vuex.Store({
         "answer2": "Во все тяжкие",
         "answer3": "Счастливые дни",
         "answer4": "Альф",
-        "src": "12.jpg"
+        "src": "12.jpg",
+        "answer": "Счастливые дни"
       },
       {
         "id": 13,
         "question": "Какой мебельный магазин ненавидела Фиби",
-        "answer1": "+Поттери барн",
+        "answer1": "Поттери барн",
         "answer2": "Икеа",
         "answer3": "Шатура мебель",
         "answer4": "Хофф",
-        "src": "13.jpg"
+        "src": "13.jpg",
+        "answer": "Поттери барн"
       },
       {
         "id": 14,
@@ -132,7 +143,8 @@ export default new Vuex.Store({
         "answer2": "блинчики",
         "answer3": "лазанью",
         "answer4": "запеканку",
-        "src": "14.jpg"
+        "src": "14.jpg",
+        "answer": "лазанью"
       },
       {
         "id": 15,
@@ -141,16 +153,18 @@ export default new Vuex.Store({
         "answer2": "Пауло",
         "answer3": "Урсула",
         "answer4": "Чендлер",
-        "src": "15.jpg"
+        "src": "15.jpg",
+        "answer": "Чендлер"
       },
       {
         "id": 16,
         "question": "В какой штат переехал Чендлер работать?",
         "answer1": "Массачусетс",
-        "answer2": "+Оклахома",
+        "answer2": "Оклахома",
         "answer3": "Тенесси",
         "answer4": "Огайо",
-        "src": "16.jpg"
+        "src": "16.jpg",
+        "answer": "Оклахома"
       },
       {
         "id": 17,
@@ -159,7 +173,8 @@ export default new Vuex.Store({
         "answer2": "7 черви",
         "answer3": "король крести",
         "answer4": "джокер",
-        "src": "17.jpg"
+        "src": "17.jpg",
+        "answer": "6 пик"
       },
       {
         "id": 18,
@@ -168,7 +183,8 @@ export default new Vuex.Store({
         "answer2": "Марсель",
         "answer3": "Париж",
         "answer4": "Анфиса",
-        "src": "18.jpeg"
+        "src": "18.jpeg",
+        "answer": "Марсель"
       },
       {
         "id": 19,
@@ -177,7 +193,8 @@ export default new Vuex.Store({
         "answer2": "Джон Полс",
         "answer3": "Стив Полсен",
         "answer4": "Пол Стивенс",
-        "src": "19.jpg"
+        "src": "19.jpg",
+        "answer": "Пол Стивенс"
       },
       {
         "id": 20,
@@ -186,7 +203,8 @@ export default new Vuex.Store({
         "answer2": "Росс",
         "answer3": "Рейчел",
         "answer4": "Чендлер",
-        "src": "20.jpg"
+        "src": "20.jpg",
+        "answer": "Фиби"
       }
           ]
   },
