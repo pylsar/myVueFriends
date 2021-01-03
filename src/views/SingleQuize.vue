@@ -5,10 +5,34 @@
                 <span class="single-quize__title">{{quiz.question}}</span>
             </div>
             <div class="single-quize__box-answer">
-                <button class="single-quize__answer">{{quiz.answer1}}</button>
-                <button class="single-quize__answer">{{quiz.answer2}}</button>
-                <button class="single-quize__answer">{{quiz.answer3}}</button>
-                <button class="single-quize__answer">{{quiz.answer4}}</button>
+                <button 
+                    class="single-quize__answer"
+                    @click="chooseAnswer()"
+                    :class="{ 'single-quize__sucsess' : isCorrect}"
+                >
+                {{quiz.answer1}}
+                </button>
+                <button 
+                    class="single-quize__answer"
+                    @click="chooseAnswer()"
+                    :class="{ 'single-quize__sucsess' : isCorrect}"
+                >
+                {{quiz.answer2}}
+                </button>
+                <button 
+                    class="single-quize__answer"
+                    @click="chooseAnswer()"
+                    :class="{ 'single-quize__sucsess' : isCorrect}"
+                >
+                {{quiz.answer3}}
+                </button>
+                <button 
+                    class="single-quize__answer"
+                    @click="chooseAnswer()"
+                    :class="{ 'single-quize__sucsess' : isCorrect}"
+                >
+                {{quiz.answer4}}
+                </button>
             </div>
             <div>
                 <router-link :to="`/single-quize/${+this.$route.params.id +1}`">next</router-link>
@@ -20,6 +44,11 @@
 import {mapGetters} from 'vuex'
 export default {
     name: 'SingleQuize',
+    data(){
+        return{
+            isCorrect: false
+        }
+    },
     computed:{
         ...mapGetters([
             'QUIZES'
@@ -29,6 +58,15 @@ export default {
             return this.$store.getters.quizById(+this.$route.params.id);
         },
     },
+    methods: {
+        chooseAnswer(){
+            if(this.$store.state.answer !== this.$store.state.answer2){
+                this.isCorrect = false;
+            }else{
+                this.isCorrect = true;
+            }
+        }
+    }
 }
 </script> 
 <style lang="scss">
@@ -67,6 +105,9 @@ export default {
         outline: none;
         border: none;
         cursor: pointer;
+    }
+    &__sucsess{
+        background: green;
     }
 }
 </style>

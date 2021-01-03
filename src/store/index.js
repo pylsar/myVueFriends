@@ -10,7 +10,7 @@ export default new Vuex.Store({
       "id": 1,
       "question": "В каком году вышла первая серия друзей?",
       "answer1": "2000",
-      "answer2": "+1994",
+      "answer2": "1994",
       "answer3": "пвоарыф",
       "answer4": 1755,
       "src": "1.jpg",
@@ -21,9 +21,10 @@ export default new Vuex.Store({
         "question": "Как звали девушку из ксерокопии?",
         "answer1": "Джанин",
         "answer2": "Зоуи",
-        "answer3": "+Хлоя",
+        "answer3": "Хлоя",
         "answer4": "Лиза",
-        "src": "2.jpg"
+        "src": "2.jpg",
+        "answer": "Хлоя"
       },
       {
         "id": 3,
