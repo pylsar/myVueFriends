@@ -42,7 +42,7 @@
     </div>
 </template> 
 <script>
-import {mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 import Timer from '../components/Timer';
 export default {
     name: 'SingleQuize',
@@ -67,6 +67,7 @@ export default {
         },
     },
     methods: {
+        ...mapActions(['stopTimer']),
         chooseAnswer(){
             if(this.quiz.answer == this.quiz.answer1){
                 this.isCorrect1 = true;
@@ -76,7 +77,9 @@ export default {
                 this.isCorrect3 = true;
             }else if(this.quiz.answer == this.quiz.answer4){
                 this.isCorrect4 = true;
-            }       
+            }    
+            this.stopTimer();
+
         },
         clearAnswers(){
             this.isCorrect1 = false;

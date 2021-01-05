@@ -207,10 +207,11 @@ export default new Vuex.Store({
         "answer": "Фиби"
       }
     ],
-    points: null,
+    points: 0,
     currentTime: 20,
     timer: null,
-    percent: 100
+    percent: 100,
+    total: 0
   },
   mutations: {
     SET_START_TIMER(state) {
@@ -218,10 +219,17 @@ export default new Vuex.Store({
         state.currentTime--;
         state.percent = state.percent - 5;
       }, 1000);
+      state.points = state.currentTime;
     },
     SET_STOP_TIMER(state) {
       clearInterval(state.timer);
+      state.points = state.currentTime;
     },
+    // SET_TOTAL_SUM(state){
+    //   this.points.forEach(function() {
+    //       state.total += state.points;
+    //   });
+    // }
   },
   actions: {
     startTimer({commit}) {
@@ -230,6 +238,9 @@ export default new Vuex.Store({
     stopTimer({commit}) {
       commit('SET_STOP_TIMER');
     },
+    totalSum({commit}){
+      commit('SET_TOTAL_SUM');
+    }
     
   },
   getters: {
@@ -245,7 +256,10 @@ export default new Vuex.Store({
     },
     PERCENT(state){
       return state.percent;
-    }
+    },
+    // TOTAL(state){
+    //   return state.total;
+    // }
   },
   modules: {
   }

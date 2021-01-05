@@ -15,10 +15,6 @@ export default {
   name: "Timer",
   data() {
     return {
-      // currentTime: 20,
-      // timer: null,
-      // percent: 100,
-      // points: null,
     };
   },
   computed:{
@@ -34,7 +30,6 @@ export default {
   watch: {
     CURRENT_TIME(time) {
       if (time === 0) {
-        // this.$store.dispatch("stopTimer");
         this.stopTimer();
       }
     },
