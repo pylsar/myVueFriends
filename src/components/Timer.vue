@@ -1,43 +1,40 @@
 <template>
   <div class="timer">
-    <span class="timer__box" :style="{ 'border-color': percent + '%' }">{{currentTime}}</span>
+    <span class="timer__box">{{CURRENT_TIME}}</span>
     <div class="loading-bar">
-      <div class="percent" :style="{ height: percent + '%' }"></div>
+      <div class="percent" :style="{ height: PERCENT + '%' }"></div>
     </div>
-    <button @click="stopBtn()">stop</button>
-    <span>осталось{{ points }}</span>
+    <!-- <button @click="stopBtn()">stop</button> -->
+    <span>осталось{{ POINTS }}</span>
   </div>
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: "Timer",
   data() {
     return {
-      currentTime: 20,
-      timer: null,
-      percent: 100,
-      points: null,
+      // currentTime: 20,
+      // timer: null,
+      // percent: 100,
+      // points: null,
     };
   },
+  computed:{
+    ...mapGetters(['CURRENT_TIME', 'PERCENT', 'POINTS']),
+  },
   methods: {
-    startTimer() {
-      this.timer = setInterval(() => {
-        this.currentTime--;
-        this.percent = this.percent - 5;
-      }, 1000);
-    },
-    stopTimer() {
-      clearInterval(this.timer);
-    },
-    stopBtn() {
-      clearInterval(this.timer);
-      this.points = this.currentTime;
-    },
+    // stopBtn() {
+    //   clearInterval(this.timer);
+    //   this.points = this.currentTime;
+    // },
+    ...mapActions(['startTimer', 'stopTimer']),
   },
   watch: {
-    currentTime(time) {
+    CURRENT_TIME(time) {
       if (time === 0) {
+        // this.$store.dispatch("stopTimer");
         this.stopTimer();
       }
     },

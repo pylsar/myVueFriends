@@ -18,13 +18,6 @@ export default {
         }
     },
     computed:{
-        // ...mapGetters([
-        //     'QUIZES'
-        // ]),
-        // quiz() {
-        //         //необходимо привести к числу
-        //     return this.$store.getters.quizById(+this.$route.params.id);
-        //     }
         },
     methods: {
        

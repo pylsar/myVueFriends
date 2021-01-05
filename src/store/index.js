@@ -206,13 +206,30 @@ export default new Vuex.Store({
         "src": "20.jpg",
         "answer": "Фиби"
       }
-    ]
+    ],
+    points: null,
+    currentTime: 20,
+    timer: null,
+    percent: 100
   },
   mutations: {
-    
+    SET_START_TIMER(state) {
+      state.timer = setInterval(() => {
+        state.currentTime--;
+        state.percent = state.percent - 5;
+      }, 1000);
+    },
+    SET_STOP_TIMER(state) {
+      clearInterval(state.timer);
+    },
   },
   actions: {
-
+    startTimer({commit}) {
+      commit('SET_START_TIMER');
+    },
+    stopTimer({commit}) {
+      commit('SET_STOP_TIMER');
+    },
     
   },
   getters: {
@@ -220,6 +237,15 @@ export default new Vuex.Store({
       return state.quizes
     },
     quizById: (state) => (id) => state.quizes.find((quiz) => quiz.id === id),
+    CURRENT_TIME(state){
+      return state.currentTime;
+    },
+    POINTS(state){
+      return state.points;
+    },
+    PERCENT(state){
+      return state.percent;
+    }
   },
   modules: {
   }
