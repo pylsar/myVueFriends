@@ -5,7 +5,7 @@
 
         </div>
         <the-points />
-        <div>{{totalSum}}</div>
+        <!-- <div>{{TOTAL}}</div> -->
         <div class="single-quize__box">
             <div class="single-quize__question">
                 <span class="single-quize__title">{{quiz.question}}</span>
@@ -13,29 +13,29 @@
             <div class="single-quize__box-answer">
                 <button 
                     class="single-quize__answer"
-                    @click="chooseAnswer()"
-                    :class="{ 'single-quize__sucsess' : isCorrect1}"
+                    @click="chooseAnswer1()"
+                    :class="[{'single-quize__sucsess' : isCorrect1}, {'single-quize__error': isError1}]"
                 >
                 {{quiz.answer1}}
                 </button>
                 <button 
                     class="single-quize__answer"
-                    @click="chooseAnswer()"
-                    :class="{ 'single-quize__sucsess' : isCorrect2}"
+                    @click="chooseAnswer2()"
+                    :class="[{'single-quize__sucsess' : isCorrect2}, {'single-quize__error': isError2}]"
                 >
                 {{quiz.answer2}}
                 </button>
                 <button 
                     class="single-quize__answer"
-                    @click="chooseAnswer()"
-                    :class="{ 'single-quize__sucsess' : isCorrect3}"
+                    @click="chooseAnswer3()"
+                    :class="[{'single-quize__sucsess' : isCorrect3}, {'single-quize__error': isError3}]"
                 >
                 {{quiz.answer3}}
                 </button>
                 <button 
                     class="single-quize__answer"
-                    @click="chooseAnswer()"
-                    :class="{ 'single-quize__sucsess' : isCorrect4}"
+                    @click="chooseAnswer4()"
+                    :class="[{'single-quize__sucsess' : isCorrect4}, {'single-quize__error': isError4}]"
                 >
                 {{quiz.answer4}}
                 </button>
@@ -62,12 +62,15 @@ export default {
             isCorrect2: false,
             isCorrect3: false,
             isCorrect4: false,
-            totalSum: 0
+            isError1: false,
+            isError2: false,
+            isError3: false,
+            isError4: false
         }
     },
     computed:{
         ...mapGetters([
-            'QUIZES', 'TOTAL', 'POINTS'
+            'QUIZES', 'TOTAL',
         ]),
         quiz() {
             //необходимо привести к числу
@@ -77,28 +80,69 @@ export default {
     },
     methods: {
         ...mapActions(['stopTimer', 'startTimer']),
-        chooseAnswer(){
+        pointsPlus(){
+            this.$store.state.points = this.$store.state.currentTime;
+            this.$store.state.total += this.$store.state.points;
+        },
+        pointsZero(){
+            this.$store.state.points = 0;
+            this.$store.state.total += this.$store.state.points;
+        },
+        chooseAnswer1(){
             if(this.quiz.answer == this.quiz.answer1){
                 this.isCorrect1 = true;
-                // this.POINTS = this.$store.state.currentTime;
-                // this.TOTAL += this.POINTS;
-            }else if(this.quiz.answer == this.quiz.answer2){
-                this.isCorrect2 = true;
-                // this.POINTS = this.$store.state.currentTime;
-                // this.TOTAL += this.POINTS;
-            }else if(this.quiz.answer == this.quiz.answer3){
-                this.isCorrect3 = true;
-                // this.POINTS = this.$store.state.currentTime;
-                // this.TOTAL += this.POINTS;
-            }else if(this.quiz.answer == this.quiz.answer4){
-                this.isCorrect4 = true;
-                // this.POINTS = this.$store.state.currentTime;
-                // this.TOTAL += this.POINTS;
-            } 
-
-
+                // this.$store.state.points = this.$store.state.currentTime;
+                // this.$store.state.total += this.$store.state.points;
+                this.pointsPlus();
+            }else{
+                this.isError1 = true;
+                // this.$store.state.points = 0;
+                // this.$store.state.total += this.$store.state.points;
+                this.pointsZero();
+            }
             this.stopTimer();
-            
+        },
+        chooseAnswer2(){
+            if(this.quiz.answer == this.quiz.answer2){
+                this.isCorrect2 = true;
+                // this.$store.state.points = this.$store.state.currentTime;
+                // this.$store.state.total += this.$store.state.points;
+                this.pointsPlus();
+            }else{
+                this.isError2 = true;
+                // this.$store.state.points = 0;
+                // this.$store.state.total += this.$store.state.points;
+                this.pointsZero();
+            }
+            this.stopTimer();
+        },
+        chooseAnswer3(){
+            if(this.quiz.answer == this.quiz.answer3){
+                this.isCorrect3 = true;
+                // this.$store.state.points = this.$store.state.currentTime;
+                // this.$store.state.total += this.$store.state.points;
+                this.pointsPlus();
+            }else{
+                this.isError3 = true;
+                // this.$store.state.points = 0;
+                // this.$store.state.total += this.$store.state.points;
+                this.pointsZero();
+            }
+            this.stopTimer();
+        },
+        chooseAnswer4(){
+            if(this.quiz.answer == this.quiz.answer4){
+                this.isCorrect4 = true;
+                // this.$store.state.points = this.$store.state.currentTime;
+                // this.$store.state.total += this.$store.state.points;
+                this.pointsPlus();
+            }else{
+                this.isError4 = true;
+                // this.$store.state.points = 0;
+                // this.$store.state.total += this.$store.state.points;
+                this.pointsZero();
+            }
+            this.stopTimer();
         },
         clearAnswers(){
             this.stopTimer();
@@ -106,6 +150,10 @@ export default {
             this.isCorrect2 = false;
             this.isCorrect3 = false;
             this.isCorrect4 = false; 
+            this.isError1 = false;
+            this.isError2 = false;
+            this.isError3 = false;
+            this.isError4 = false;
             this.$store.state.currentTime = 20;
             this.$store.state.percent = 100;
             this.startTimer();
@@ -151,7 +199,7 @@ export default {
     &__sucsess{
         background: green;
     }
-    &__wrong{
+    &__error{
         background: red;
     }
     &__gallary{
