@@ -5,6 +5,7 @@
 
         </div>
         <the-points />
+        <div>{{totalSum}}</div>
         <div class="single-quize__box">
             <div class="single-quize__question">
                 <span class="single-quize__title">{{quiz.question}}</span>
@@ -61,35 +62,43 @@ export default {
             isCorrect2: false,
             isCorrect3: false,
             isCorrect4: false,
+            totalSum: 0
         }
     },
     computed:{
         ...mapGetters([
-            'QUIZES'
+            'QUIZES', 'TOTAL', 'POINTS'
         ]),
         quiz() {
             //необходимо привести к числу
             return this.$store.getters.quizById(+this.$route.params.id);
         },
+        
     },
     methods: {
         ...mapActions(['stopTimer', 'startTimer']),
         chooseAnswer(){
             if(this.quiz.answer == this.quiz.answer1){
                 this.isCorrect1 = true;
-                this.$store.state.total += this.$store.state.points;
+                // this.POINTS = this.$store.state.currentTime;
+                // this.TOTAL += this.POINTS;
             }else if(this.quiz.answer == this.quiz.answer2){
                 this.isCorrect2 = true;
-                this.$store.state.total += this.$store.state.points;
+                // this.POINTS = this.$store.state.currentTime;
+                // this.TOTAL += this.POINTS;
             }else if(this.quiz.answer == this.quiz.answer3){
                 this.isCorrect3 = true;
-                this.$store.state.total += this.$store.state.points;
+                // this.POINTS = this.$store.state.currentTime;
+                // this.TOTAL += this.POINTS;
             }else if(this.quiz.answer == this.quiz.answer4){
                 this.isCorrect4 = true;
-                this.$store.state.total += this.$store.state.points;
-            }    
-            this.stopTimer();
+                // this.POINTS = this.$store.state.currentTime;
+                // this.TOTAL += this.POINTS;
+            } 
 
+
+            this.stopTimer();
+            
         },
         clearAnswers(){
             this.stopTimer();
@@ -109,10 +118,6 @@ export default {
     width: 100%;
     height: 100vh;
     position: relative;
-    // background: lime;
-    // background: linear-gradient(90deg, #b9deed, #efefef);
-    // background: #567599;                                            
-    // background: -webkit-linear-gradient(to right, #567599, #1f2e4b);
     background: linear-gradient(to right, #567599, #1f2e4b);
     &__box{
         width: 80%;

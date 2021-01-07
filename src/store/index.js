@@ -224,6 +224,9 @@ export default new Vuex.Store({
     SET_STOP_TIMER(state) {
       clearInterval(state.timer);
       state.points = state.currentTime;
+      state.total += state.points;
+      
+      
     },
     // SET_TOTAL_SUM(state){
     //   this.points.forEach(function() {
