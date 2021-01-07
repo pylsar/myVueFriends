@@ -40,8 +40,12 @@
                 </button>
             </div>
             <transition name="slide-fade">  
-                <div v-if="ISNEXT" class="single-quize__next">
-                    <router-link :to="`/single-quize/${+this.$route.params.id +1}`"><span @click="clearAnswers()">Следующий вопрос</span></router-link>
+                <div v-show="ISNEXT" class="single-quize__next">
+                    <router-link v-if="quiz.id < 20" :to="`/single-quize/${+this.$route.params.id +1}`"><span @click="clearAnswers()">Следующий вопрос</span></router-link>
+                    <router-link v-else to="/">
+                    <span>Вернуться в начало</span><br>
+                    <span>Ваш результат: {{TOTAL}}</span>
+                    </router-link>
                 </div>
             </transition>
         </div>
