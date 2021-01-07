@@ -1,8 +1,7 @@
 <template>
     <div class="single-quize" >
         <timer />
-        <div class="single-quize__gallary" :style="{backgroundImage: `url(${require('@/assets/img/' + quiz.src)})`}">
-        </div>
+        <div class="single-quize__gallary" :style="{backgroundImage: `url(${require('@/assets/img/' + quiz.src)})`}"></div>
         <the-points />
         <div class="single-quize__box">
             <div class="single-quize__question">
@@ -42,7 +41,7 @@
             <transition name="slide-fade">  
                 <div v-show="ISNEXT" class="single-quize__next">
                     <router-link v-if="quiz.id < 20" :to="`/single-quize/${+this.$route.params.id +1}`"><span @click="clearAnswers()">Следующий вопрос</span></router-link>
-                    <router-link v-else to="/">
+                    <router-link v-else to="/" >
                     <span>Вернуться в начало</span><br>
                     <span>Ваш результат: {{TOTAL}}</span>
                     </router-link>
@@ -146,7 +145,7 @@ export default {
             this.$store.state.currentTime = 20;
             this.$store.state.percent = 100;
             this.startTimer();
-        }
+        },
     }
 }
 </script> 
@@ -257,5 +256,6 @@ export default {
   transform: translateX(30px);
   opacity: 0;
 }
+
 </style>
 
