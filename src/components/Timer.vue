@@ -4,8 +4,6 @@
     <div class="timer__bar">
       <div class="timer__percent" :style="{ height: PERCENT + '%' }"></div>
     </div>
-    <!-- <button @click="stopBtn()">stop</button> -->
-    <span>осталось{{ POINTS }}</span>
   </div>
 </template>
 
@@ -21,10 +19,6 @@ export default {
     ...mapGetters(['CURRENT_TIME', 'PERCENT', 'POINTS']),
   },
   methods: {
-    // stopBtn() {
-    //   clearInterval(this.timer);
-    //   this.points = this.currentTime;
-    // },
     ...mapActions(['startTimer', 'stopTimer']),
   },
   watch: {
@@ -47,19 +41,26 @@ export default {
   position: absolute;
   top: 5%;
   right: 5%;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   &__box{
     width: 60px;
     height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid green;
+    border: 3px solid skyblue;
     border-radius: 50%;
+    margin-bottom: 24px;
+    color: white;
   }
   &__bar{
     position: relative;
     width: 30px;
-    height: 300px;
+    height: calc(100% - 84px);
     border-radius: 15px;
     transform: rotate(180deg);
     overflow: hidden;
@@ -72,7 +73,7 @@ export default {
     left: 1px;
     right: 1px;
     display: block;
-    background-color: #a5df41;
+    background-color: skyblue;
     background-size: 30px 30px;
     background-image: linear-gradient(
     135deg,

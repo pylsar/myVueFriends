@@ -2,12 +2,12 @@
     <div class="single-quize" >
         <timer />
         <div class="single-quize__gallary" :style="{backgroundImage: `url(${require('@/assets/img/' + quiz.src)})`}">
-
         </div>
         <the-points />
         <div class="single-quize__box">
             <div class="single-quize__question">
                 <span class="single-quize__title">{{quiz.question}}</span>
+                <span class="single-quize__numbers"><sup>{{quiz.id}}</sup>/<sub>{{QUIZES.length}}</sub></span>
             </div>
             <div class="single-quize__box-answer">
                 <button 
@@ -41,7 +41,7 @@
             </div>
             <transition name="slide-fade">  
                 <div v-if="ISNEXT" class="single-quize__next">
-                    <router-link :to="`/single-quize/${+this.$route.params.id +1}`"><span @click="clearAnswers()">Еще хочу</span></router-link>
+                    <router-link :to="`/single-quize/${+this.$route.params.id +1}`"><span @click="clearAnswers()">Следующий вопрос</span></router-link>
                 </div>
             </transition>
         </div>
@@ -153,12 +153,11 @@ export default {
     position: relative;
     background: linear-gradient(to right, #567599, #1f2e4b);
     &__box{
-        width: 80%;
+        width: 70%;
         position: absolute;
         bottom: 10%;
         left: 50%;
         transform: translateX(-50%);
-        border: 1px solid red;
     }
     &__question{
         background: skyblue;
@@ -166,20 +165,38 @@ export default {
         color: #000;
         padding-top: 50px;
         padding-bottom: 50px;
+        margin-bottom: 24px;
+        border-radius: 50px;
+        box-shadow: 9px 6px 70px 32px rgba(34, 60, 80, 0.21);
+        font-size: 24px;
+        position: relative;
     }
     &__box-answer{
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        border: 1px solid green;
     }
     &__answer{
-        width: calc(50% - 50px);
-        height: 50px;
+        width: calc(50% - 60px);
+        height: 80px;
         background: skyblue;
         outline: none;
         border: none;
         cursor: pointer;
+        border-radius: 50px;
+        margin-bottom: 24px;
+        box-shadow: 9px 6px 70px 32px rgba(34, 60, 80, 0.21);
+        font-size: 24px;
+        &:hover{
+            text-shadow: 1px 1px 2px black;
+            background: darken(skyblue, 10%);
+        }
+        &:nth-child(3){
+            margin-bottom: 0;
+        }
+        &:nth-child(4){
+            margin-bottom: 0;
+        }
     }
     &__sucsess{
         background: green;
@@ -187,20 +204,24 @@ export default {
     &__error{
         background: red;
     }
+    &__numbers{
+        position: absolute;
+        bottom: 10%;
+        right: 3%;
+    }
     &__gallary{
         width: 600px;
         height: 400px;
-        border: 1px solid red;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
-        top: 10%;
+        top: 5%;
         left: 50%;
         transform: translateX(-50%);
     }
     &__next{
-        background: red;
+        background: black;
         position: absolute;
         top: 0;
         left: 0;
@@ -209,7 +230,16 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 40px;
+        font-size: 50px;
+        opacity: .8;
+        border-radius: 50px 49px 39px 39px;
+        & a {
+            color: white;
+            text-decoration: none;
+            &:hover{
+                text-shadow: 1px 1px 2px white;
+            }
+        }
     }
 }
 
