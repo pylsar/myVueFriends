@@ -5,7 +5,6 @@
 
         </div>
         <the-points />
-        <!-- <div>{{TOTAL}}</div> -->
         <div class="single-quize__box">
             <div class="single-quize__question">
                 <span class="single-quize__title">{{quiz.question}}</span>
@@ -40,9 +39,11 @@
                 {{quiz.answer4}}
                 </button>
             </div>
-            <div>
-                <router-link :to="`/single-quize/${+this.$route.params.id +1}`"><span @click="clearAnswers()">next</span></router-link>
-            </div>
+            <transition name="slide-fade">  
+                <div v-if="ISNEXT" class="single-quize__next">
+                    <router-link :to="`/single-quize/${+this.$route.params.id +1}`"><span @click="clearAnswers()">Еще хочу</span></router-link>
+                </div>
+            </transition>
         </div>
     </div>
 </template> 
@@ -65,12 +66,12 @@ export default {
             isError1: false,
             isError2: false,
             isError3: false,
-            isError4: false
+            isError4: false,
         }
     },
     computed:{
         ...mapGetters([
-            'QUIZES', 'TOTAL',
+            'QUIZES', 'TOTAL', 'ISNEXT'
         ]),
         quiz() {
             //необходимо привести к числу
@@ -91,13 +92,9 @@ export default {
         chooseAnswer1(){
             if(this.quiz.answer == this.quiz.answer1){
                 this.isCorrect1 = true;
-                // this.$store.state.points = this.$store.state.currentTime;
-                // this.$store.state.total += this.$store.state.points;
                 this.pointsPlus();
             }else{
                 this.isError1 = true;
-                // this.$store.state.points = 0;
-                // this.$store.state.total += this.$store.state.points;
                 this.pointsZero();
             }
             this.stopTimer();
@@ -105,13 +102,9 @@ export default {
         chooseAnswer2(){
             if(this.quiz.answer == this.quiz.answer2){
                 this.isCorrect2 = true;
-                // this.$store.state.points = this.$store.state.currentTime;
-                // this.$store.state.total += this.$store.state.points;
                 this.pointsPlus();
             }else{
                 this.isError2 = true;
-                // this.$store.state.points = 0;
-                // this.$store.state.total += this.$store.state.points;
                 this.pointsZero();
             }
             this.stopTimer();
@@ -119,13 +112,9 @@ export default {
         chooseAnswer3(){
             if(this.quiz.answer == this.quiz.answer3){
                 this.isCorrect3 = true;
-                // this.$store.state.points = this.$store.state.currentTime;
-                // this.$store.state.total += this.$store.state.points;
                 this.pointsPlus();
             }else{
                 this.isError3 = true;
-                // this.$store.state.points = 0;
-                // this.$store.state.total += this.$store.state.points;
                 this.pointsZero();
             }
             this.stopTimer();
@@ -133,13 +122,9 @@ export default {
         chooseAnswer4(){
             if(this.quiz.answer == this.quiz.answer4){
                 this.isCorrect4 = true;
-                // this.$store.state.points = this.$store.state.currentTime;
-                // this.$store.state.total += this.$store.state.points;
                 this.pointsPlus();
             }else{
                 this.isError4 = true;
-                // this.$store.state.points = 0;
-                // this.$store.state.total += this.$store.state.points;
                 this.pointsZero();
             }
             this.stopTimer();
@@ -214,6 +199,29 @@ export default {
         left: 50%;
         transform: translateX(-50%);
     }
+    &__next{
+        background: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+    }
+}
+
+.slide-fade-enter-active{
+  transition: all 2s ease;
+}
+.slide-fade-leave-active{
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to{
+  transform: translateX(30px);
+  opacity: 0;
 }
 </style>
 

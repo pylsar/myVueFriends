@@ -211,7 +211,8 @@ export default new Vuex.Store({
     currentTime: 20,
     timer: null,
     percent: 100,
-    total: 0
+    total: 0,
+    isNext: false
   },
   mutations: {
     SET_START_TIMER(state) {
@@ -220,9 +221,11 @@ export default new Vuex.Store({
         state.percent = state.percent - 5;
       }, 1000);
       state.points = state.currentTime;
+      state.isNext = false;
     },
     SET_STOP_TIMER(state) {
       clearInterval(state.timer);
+      state.isNext = true;
       // state.points = state.currentTime;
       // state.total += state.points;
       
@@ -262,6 +265,9 @@ export default new Vuex.Store({
     },
     TOTAL(state){
       return state.total;
+    },
+    ISNEXT(state){
+      return state.isNext;
     }
   },
   modules: {
