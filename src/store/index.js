@@ -257,9 +257,9 @@ export default new Vuex.Store({
     PERCENT(state){
       return state.percent;
     },
-    // TOTAL(state){
-    //   return state.total;
-    // }
+    TOTAL(state){
+      return state.total;
+    }
   },
   modules: {
   }

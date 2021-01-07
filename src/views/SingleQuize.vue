@@ -1,6 +1,10 @@
 <template>
-    <div class="single-quize" :style="{backgroundImage: `url(${require('@/assets/img/' + quiz.src)})`}">
+    <div class="single-quize" >
         <timer />
+        <div class="single-quize__gallary" :style="{backgroundImage: `url(${require('@/assets/img/' + quiz.src)})`}">
+
+        </div>
+        <the-points />
         <div class="single-quize__box">
             <div class="single-quize__question">
                 <span class="single-quize__title">{{quiz.question}}</span>
@@ -43,11 +47,13 @@
 </template> 
 <script>
 import {mapGetters, mapActions} from 'vuex';
+import ThePoints from '../components/ThePoints.vue';
 import Timer from '../components/Timer';
 export default {
     name: 'SingleQuize',
     components:{
-        Timer
+        Timer,
+        ThePoints
     },
     data(){
         return{
@@ -67,25 +73,33 @@ export default {
         },
     },
     methods: {
-        ...mapActions(['stopTimer']),
+        ...mapActions(['stopTimer', 'startTimer']),
         chooseAnswer(){
             if(this.quiz.answer == this.quiz.answer1){
                 this.isCorrect1 = true;
+                this.$store.state.total += this.$store.state.points;
             }else if(this.quiz.answer == this.quiz.answer2){
                 this.isCorrect2 = true;
+                this.$store.state.total += this.$store.state.points;
             }else if(this.quiz.answer == this.quiz.answer3){
                 this.isCorrect3 = true;
+                this.$store.state.total += this.$store.state.points;
             }else if(this.quiz.answer == this.quiz.answer4){
                 this.isCorrect4 = true;
+                this.$store.state.total += this.$store.state.points;
             }    
             this.stopTimer();
 
         },
         clearAnswers(){
+            this.stopTimer();
             this.isCorrect1 = false;
             this.isCorrect2 = false;
             this.isCorrect3 = false;
             this.isCorrect4 = false; 
+            this.$store.state.currentTime = 20;
+            this.$store.state.percent = 100;
+            this.startTimer();
         }
     }
 }
@@ -94,10 +108,12 @@ export default {
 .single-quize{
     width: 100%;
     height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     position: relative;
+    // background: lime;
+    // background: linear-gradient(90deg, #b9deed, #efefef);
+    // background: #567599;                                            
+    // background: -webkit-linear-gradient(to right, #567599, #1f2e4b);
+    background: linear-gradient(to right, #567599, #1f2e4b);
     &__box{
         width: 80%;
         position: absolute;
@@ -132,6 +148,18 @@ export default {
     }
     &__wrong{
         background: red;
+    }
+    &__gallary{
+        width: 600px;
+        height: 400px;
+        border: 1px solid red;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 </style>
