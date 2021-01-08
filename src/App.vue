@@ -19,5 +19,10 @@ export default {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'GABRWFFR';
+  src: url('~@/assets/fonts/GABRWFFR.TTF');
+}
+
 
 </style>
