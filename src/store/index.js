@@ -226,16 +226,7 @@ export default new Vuex.Store({
     SET_STOP_TIMER(state) {
       clearInterval(state.timer);
       state.isNext = true;
-      // state.points = state.currentTime;
-      // state.total += state.points;
-      
-      
     },
-    // SET_TOTAL_SUM(state){
-    //   this.points.forEach(function() {
-    //       state.total += state.points;
-    //   });
-    // }
   },
   actions: {
     startTimer({commit}) {
